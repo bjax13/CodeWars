@@ -7,18 +7,12 @@ function gap(gap, start, end) {
     function isPrime() {
       for (var i = start; i <= end; i++) {
         var primBool = true;
-
-        if (false) {
-
-        }else if (true) {
-          for (var j = i-1; j > 1; j--) {
-            if (i%j === 0) {
-              primBool = false;
-              j = 0
-            }
+        for (var j = i-1; j > 1; j--) {
+          if (i%j === 0) {
+            primBool = false;
+            j = 0;
           }
         }
-
         if (primBool) {
           arrOfPrime.push(i);
           //console.log(arrOfPrime[(arrOfPrime.length-1)] - arrOfPrime[(arrOfPrime.length-2)]);
@@ -26,7 +20,7 @@ function gap(gap, start, end) {
 
           }else if (arrOfPrime[(arrOfPrime.length-1)] - arrOfPrime[(arrOfPrime.length-2)]=== gap) {
             firstGap.push(arrOfPrime[(arrOfPrime.length-2)]);
-            firstGap.push(arrOfPrime[(arrOfPrime.length-1)]);
+            firstGap.push(arrOfPrime[(arrOfPrime.length-1)];
             return firstGap;
           }
         }
