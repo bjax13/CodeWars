@@ -2,7 +2,12 @@ function gap(gap, start, end) {
     var currentGap  = 0;
     var currentStart = start;
     var arrOfPrime = [];
-    var firstGap = [2];
+    var firstGap = [start];
+
+    console.log("gap:"+gap);
+    console.log("start:"+start);
+    console.log("end:"+end);
+
 
     // function isPrime() {
     //   for (var i = start; i <= end; i++) {
@@ -46,7 +51,7 @@ function gap(gap, start, end) {
         }
       }
 
-      
+
 
 
       for (var i = start; i < end; i+=2) {
@@ -59,7 +64,11 @@ function gap(gap, start, end) {
             firstGap[0]=firstGap.pop();
             firstGap.push(i)
             if (firstGap[1]-firstGap[0] === gap) {
+              console.log(firstGap);
               return firstGap;
+            }else if (firstGap[1]-firstGap[0] >(end - start)/2) {
+              console.log(null);
+              return null;
             }
           }
           console.log(firstGap);
@@ -75,6 +84,7 @@ function gap(gap, start, end) {
 
 
     if (isPrime(firstGap.length >0)) {
+      console.log("first"+ firstGap);
       return firstGap
     };
 
@@ -86,7 +96,7 @@ function gap(gap, start, end) {
     //   }
     // }
 
-
+    console.log("last line of code");
     return null
 }
 
