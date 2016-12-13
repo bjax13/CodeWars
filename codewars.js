@@ -81,24 +81,24 @@
 //
 //
 //     }
-//
-//
-//     if (isPrime(firstGap.length >0)) {
-//       console.log("first"+ firstGap);
-//       return firstGap
-//     };
-//
-//     // for (var k = 0; k < arrOfPrime.length; k++) {
-//     //   if (arrOfPrime[k+1]-arrOfPrime[k] === gap) {
-//     //     firstGap.push(arrOfPrime[k]);
-//     //     firstGap.push(arrOfPrime[k+1]);
-//     //     return firstGap;
-//     //   }
-//     // }
-// 
-//     console.log("last line of code");
-//     return null
-// }
+
+
+    if (isPrime(firstGap.length >0)) {
+      console.log("first"+ firstGap);
+      return firstGap
+    };
+
+    // for (var k = 0; k < arrOfPrime.length; k++) {
+    //   if (arrOfPrime[k+1]-arrOfPrime[k] === gap) {
+    //     firstGap.push(arrOfPrime[k]);
+    //     firstGap.push(arrOfPrime[k+1]);
+    //     return firstGap;
+    //   }
+    // }
+
+    console.log("last line of code");
+    return null
+}
 
 function gap(g, m, n) {
     var lastPrime = 0;
