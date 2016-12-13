@@ -46,8 +46,10 @@ function gap(gap, start, end) {
         }
       }
 
+      
 
-      for (var i = start; i < end; i++) {
+
+      for (var i = start; i < end; i+=2) {
         if (arrOfPrime[i]) {
           if (!firstGap) {
             firstGap.push(i);
@@ -62,6 +64,9 @@ function gap(gap, start, end) {
           }
           console.log(firstGap);
 
+        }
+        if (i%2=== 0) {
+          i--;
         }
       }
 
@@ -85,4 +90,4 @@ function gap(gap, start, end) {
     return null
 }
 
-console.log(gap(2,2,100));
+console.log(gap(8,300,1111400));
