@@ -14,7 +14,10 @@ console.log(pigIfy('translate english to pig latin'));
 
 function pigIfy2(string) {
 
-  return string.split('').forEach(function (word) {word = word.slice(1) + word.charAt(0) + "a"}).join(" ")
+  return string.split(' ').map(function (word) {
+    word = word.slice(1) + word.charAt(0) + "a"
+    return word
+  }).join(" ")
 }
 
 console.log(pigIfy2('translate english to pig latin'));
