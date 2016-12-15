@@ -1,12 +1,22 @@
 //Find the length of longest subsequence of same incrementing values
 function longestSequenceIn(string)
 {
-  var longest = 0;
+  if(!string){
+    return 0;
+  }
+  console.log(string);
+  var longest = 1;
   var increment = 0;
-  var count = 1;
+  var count = 0;
   var arr = string.split(' ').map(function (a) {
     return parseInt(a,10);
   });
+
+  if (arr.length>1) {
+    increment = arr[1] - arr[0];
+  }else{
+    return arr.length;
+  }
 
   for (var i = 0; i < arr.length - 1; i++) {
     if (arr[(i+1)] - arr[(i)] === increment) {
@@ -26,4 +36,4 @@ function longestSequenceIn(string)
   return longest +1
 }
 
-console.log(longestSequenceIn('1 2 3 4 5 6'));
+console.log(longestSequenceIn('1 3 9'));
