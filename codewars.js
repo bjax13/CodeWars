@@ -1,14 +1,37 @@
 
 function mixedFraction(s){
   var integer = 0;
-
+  var negative = false;
   var arr = s.split("/").map(function (s) {
     return parseInt(s,10);
   })
 
   //throw error if 0 is in the denominator
   if (arr[1]=== 0) {
-    return "Error / 0"
+    throw new Error('ZeroDivisionError');
+  }
+
+
+  if (arr[0] < 0 || arr[1] <0 ) {
+    if (arr[0] < 0 && arr[1] <0 ) {
+      negative = false;
+    }else {
+      negative = true;
+    }
+    if (arr[0]< 0) {
+      arr[0]*=-1;
+    }
+    if (arr[1]< 0) {
+      arr[1]*=-1;
+    }
+
+  }
+
+  if (arr[0]=== arr[1]) {
+    if (negative) {
+      return '-1';
+    }
+    return "1";
   }
 
   //test if integer needs to be updated
@@ -20,9 +43,21 @@ function mixedFraction(s){
   //test if result is 0 or int only
   if (!arr[0]) {
     if (!integer) {
-      return 0;
+      return "0";
     }else {
-      return integer;
+      if (negative) {
+        integer*=-1;
+      }
+      return integer.toString();
+    }
+  }
+
+  //reduce fraction
+  for (var i = 2; i < arr[1]; i++) {
+    if (arr[0]%i === 0 && arr[1]%i === 0) {
+      arr[0]/=i;
+      arr[1]/=i;
+      i=1;
     }
   }
 
@@ -35,11 +70,21 @@ function mixedFraction(s){
   console.log(arr[1]);
   console.log(arr);
 
+  if (negative) {
+    if (integer) {
+      integer*=-1;
+    }else {
+      arr[0]*=-1;
+    }
+  }
 
-  //your code here
+  if (integer === 0) {
+    return arr[0] + "/" + arr[1];
+  }
+
   return integer + " " + arr[0] + "/" + arr[1];
 }
 
 
 
-console.log(mixedFraction("42/9"));
+console.log(mixedFraction("1/1"));
