@@ -1,4 +1,5 @@
 function decompose(n) {
+    console.log("start");
     if (n<5) {
       return null;
     }
@@ -13,6 +14,7 @@ function decompose(n) {
 
 
     var arr2 = sumsOfSq(nSquared,n-1);
+
 
     if (passed(arr2)) {
       for (var i = 0; i < arr2.length; i++) {
@@ -29,6 +31,15 @@ function decompose(n) {
         }else {
           var arr3 = sumsOfSq(smallTot,arr2[i]-1)
           console.log(arr3);
+          if (passed(arr3.reverse())) {
+            arr = [];
+            arr2.shift();
+            arr = arr3.concat(arr2)
+            console.log(arr);
+            if (passed(arr)) {
+              return arr;
+            }
+          }
         }
       }
     }
@@ -62,7 +73,9 @@ function decompose(n) {
       return passed;
     }
 
-    console.log(passed(arr2));
+    console.log(passed(arr));
+
+    console.log("returned");
 
     return arr;
 }
