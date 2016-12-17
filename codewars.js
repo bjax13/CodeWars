@@ -12,29 +12,38 @@ function decompose(n) {
 
     arr.push(n-1);
 
-    var arr2 =[]
+    var arr2 = sumsOfSq(nSquared);
 
-    while (nSquared > 0) {
-      var root  = Math.floor(Math.sqrt(nSquared),1)
-      nSquared-=root*root;
-      arr2.unshift(root);
-      arr.unshift(root);
-
-
+    for (var i = 0; i < arr2.length; i++) {
+      arr.unshift(arr2[i]);
     }
 
-    var passed = true;
-    for (var i = 0; i < arr2.length - 1; i++) {
-      if (arr2[i]=== arr2[(i+1)]) {
-        passed = false
+
+    function sumsOfSq(nSquared) {
+      var total = nSquared;
+      var arr2 =[];
+      while (total > 0) {
+        var root  = Math.floor(Math.sqrt(total),1)
+        total-=root*root;
+        arr2.push(root);
       }
-
-
-
-
+      return arr2;
     }
 
-    console.log(passed);
+    function passed(arr) {
+
+      var passed = true;
+
+      for (var i = 0; i < arr.length - 1; i++) {
+        if (arr[i]=== arr2[(i+1)]) {
+          passed = false
+        }
+
+      }
+      return passed;
+    }
+
+    console.log(passed(arr2));
 
     return arr;
 }
@@ -60,6 +69,6 @@ function decompose(n) {
 
 
 
-
-console.log(decompose(2));
 console.log(decompose(7));
+console.log(decompose(50));
+console.log(decompose(44));
