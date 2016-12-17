@@ -29,18 +29,37 @@ function decompose(n) {
           arr2.shift();
           i--;
         }else {
-          var arr3 = sumsOfSq(smallTot,arr2[i]-1)
-          console.log(arr3);
-          if (passed(arr3.reverse())) {
-            arr = [];
-            arr2.shift();
-            arr = arr3.concat(arr2)
-            console.log(arr);
-            if (passed(arr)) {
-              return arr;
+
+          for (var j = arr2[i]-1; j >= 5; j--) {
+
+            var arr3 = sumsOfSq(smallTot,j)
+
+            arr3.sort(function(a, b) {
+              return a - b;
+            });
+            var inOrder ;
+            if (arr3.length-1>arr3.length-2) {
+              inOrder = true;
+            }else {
+              inOrder = false;
             }
+
+            console.log(arr3);
+            if (passed(arr3)&& inOrder) {
+              arr = [];
+              arr2.shift();
+              arr = arr3.concat(arr2)
+              console.log(arr);
+              if (passed(arr)) {
+                return arr;
+              }
+            }
+
+
           }
+
         }
+
       }
     }
 
@@ -65,7 +84,7 @@ function decompose(n) {
       var passed = true;
 
       for (var i = 0; i < arr.length - 1; i++) {
-        if (arr[i]=== arr2[(i+1)]) {
+        if (arr[i]=== arr[(i+1)]) {
           passed = false
         }
 
@@ -102,5 +121,6 @@ function decompose(n) {
 
 
 console.log(decompose(7));
-console.log(decompose(50));
+console.log(decompose(625));
 console.log(decompose(44));
+console.log(decompose(50));
