@@ -53,6 +53,51 @@ function decompose(n) {
               if (passed(arr)) {
                 return arr;
               }
+            }else {
+              var smallTot2 = 0;
+              for (var k = 0; k < arr3.length; k++) {
+                smallTot2+=arr3[k]*arr3[k];
+                if (arr3[k]<5) {
+                  arr3.shift();
+                  k--;
+                }else {
+
+                  for (var l = arr3[k]-1; j >= 5; l--) {
+
+                    var arr4 = sumsOfSq(smallTot,l)
+
+                    arr4.sort(function(a, b) {
+                      return a - b;
+                    });
+                    var inOrder ;
+                    if (arr4.length-1>arr4.length-2) {
+                      inOrder = true;
+                    }else {
+                      inOrder = false;
+                    }
+
+                    console.log(arr4);
+                    if (passed(arr4)&& inOrder) {
+                      arr = [];
+                      arr3.shift();
+                      arr2.shift();
+                      arr = arr4.concat(arr2)
+                      console.log(arr);
+                      if (passed(arr)) {
+                        return arr;
+                      }
+                    }else {
+
+                    }
+
+
+                  }
+
+                }
+
+              }
+
+
             }
 
 
@@ -102,7 +147,18 @@ function decompose(n) {
 
 
 
+// *********Best practice solve with recusive function
+// like the one below
 
+// function decompose(n) {
+//   return loop(n - 1, n * n, []);
+//   function loop(k, rest, path) {
+//     return (rest === 0) ? path :
+//            (rest < 0 || k === 0) ? null :
+//               loop(k - 1, rest - k * k, [k].concat(path)) ||
+//               loop(k - 1, rest, path);
+//   }
+// }
 
 
 
