@@ -19,3 +19,5 @@ var nbrOfLaps = function (x, y) {
 
   return [xCount, yCount];
 }
+
+// Finished
