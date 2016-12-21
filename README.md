@@ -5,7 +5,7 @@ Just an area where I can work on CodeWars problems in my own enviroment.
 ___________________________ Current problem _______________
 # Paste problem text below.
 ___________________________________________________________
-For a given list [x1, x2, x3, ..., xn] compute the last (decimal) digit of x1 ^ (x2 ^ (x3 ^ (... ^ xn))).
+<!-- For a given list [x1, x2, x3, ..., xn] compute the last (decimal) digit of x1 ^ (x2 ^ (x3 ^ (... ^ xn))).
 
 E. g.,
 
@@ -16,4 +16,6 @@ Beware: powers grow incredibly fast. For example, 9 ^ (9 ^ 9) has more than 369 
 
 Corner cases: we assume that 0 ^ 0 = 1 and that lastDigit of an empty list equals to 1.
 
-This kata generalizes Last digit of a large number; you may find useful to solve it beforehand.
+This kata generalizes Last digit of a large number; you may find useful to solve it beforehand. -->
+
+working on morning toy problem
