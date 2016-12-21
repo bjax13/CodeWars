@@ -31,15 +31,30 @@ function lastDigit(array) {
         return total;
     }
 
-    var lastDigitPattern = [];
+
 
 
 
     var digit = argArray[0];
     var mod = 0;
+    var lastDigitPattern = powerPattern(digit);
+
+    if (argArray[0] > argArray[1]) {
+      lastDigitPattern.reverse();
+      for (var i = 1; i < argArray.length; i++) {
+        argArray[i] = lastDigitPattern[argArray[i]%powerPattern.length];
+      }
+    }
+
+
+    console.log(argArray);
+
+
+
+    // works for most but not for some.
 
     for (var i = 0; i < argArray.length-1; i++) {
-      lastDigitPattern = powerPattern(digit);
+
       console.log();
       mod = argArray[i+1] % lastDigitPattern.length;
       console.log(digit);
@@ -71,7 +86,7 @@ function lastDigit(array) {
             }
             pattern.push(last)
         }
-        return pattern;
+        return pattern.reverse();
     }
 
 
