@@ -2,8 +2,9 @@ function lastDigit(array) {
     console.log(array);
     var argArray = array;
 
+    console.log(Math.pow(4,2));
+    console.log(Math.pow(3,16));
 
-    console.log(Math.pow(1, 0));
     // test if array is empty
     if (argArray.length === 0) {
         return 1;
@@ -39,10 +40,17 @@ function lastDigit(array) {
 
     for (var i = 0; i < argArray.length-1; i++) {
       lastDigitPattern = powerPattern(digit);
-
+      console.log();
       mod = argArray[i+1] % lastDigitPattern.length;
+      console.log(digit);
+      // if (argArray[i] > argArray[i+1]) {
+      //   lastDigitPattern.reverse();
+      // }
+      if (!mod) {
+        mod = lastDigitPattern.length;
+      }
 
-      digit = lastDigitPattern[mod];
+      digit = lastDigitPattern[mod-1];
 
     }
 
@@ -63,7 +71,7 @@ function lastDigit(array) {
             }
             pattern.push(last)
         }
-        return pattern
+        return pattern;
     }
 
 
@@ -79,4 +87,5 @@ function lastDigit(array) {
 
 }
 // 4
-console.log(lastDigit([0, 0, 0]));
+
+console.log(lastDigit([4,3,6]));
