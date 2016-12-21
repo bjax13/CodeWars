@@ -13,7 +13,7 @@ function lastDigit(num) {
     return num.toString()[num.toString().length-1]
 }
 
-console.log(lastDigit(23452));
+
 
 console.log(argArray);
 
