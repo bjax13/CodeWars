@@ -3,7 +3,7 @@ function lastDigit(array) {
     var argArray = array;
 
     console.log(Math.pow(4,2));
-    console.log(Math.pow(3,16));
+    console.log(Math.pow(4,729));
 
     // test if array is empty
     if (argArray.length === 0) {
