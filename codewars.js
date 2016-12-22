@@ -50,66 +50,66 @@ function lastDigit(array) {
 
     // reduce each to last digit of each power
 
-    for (var i = argArray.length-1; i >=1 ; i--) {
-      argArray[i] = argArray[i]% lastDigitPattern.length
-
-      argArray[i] = lastDigitPattern[argArray[i]];
-
-      console.log(argArray);
-    }
-
-    var total;
-
-    for (var i = argArray.length-1; i >=1 ; i--) {
-      total = Math.pow(argArray[i-1],argArray[i])
-
-      argArray[i-1]= total% lastDigitPattern.length
-
-      argArray[i-1] = lastDigitPattern[argArray[i-1]];
-
-      console.log(argArray);
-    }
-
-    if (argArray[1]%lastDigitPattern.length-1 <0) {
-      return lastDigitPattern[lastDigitPattern.length-1]
-    }else {
-      return lastDigitPattern[argArray[1]%lastDigitPattern.length-1]
-    }
-
-
-
-
-
-
+    // for (var i = argArray.length-1; i >=1 ; i--) {
+    //   argArray[i] = argArray[i]% lastDigitPattern.length
     //
-    // if (argArray[0] > argArray[1]) {
-    //   lastDigitPattern.reverse();
-    //   for (var i = 1; i < argArray.length; i++) {
-    //     argArray[i] = lastDigit(argArray[i])
-    //   }
+    //   argArray[i] = lastDigitPattern[argArray[i]];
+    //
+    //   console.log(argArray);
     // }
     //
+    // var total;
     //
-    // console.log(argArray);
+    // for (var i = argArray.length-1; i >=1 ; i--) {
+    //   total = Math.pow(argArray[i-1],argArray[i])
     //
+    //   argArray[i-1]= total% lastDigitPattern.length
     //
+    //   argArray[i-1] = lastDigitPattern[argArray[i-1]];
     //
-    // // works for most but not for some.
-    //
-    // for (var i = 0; i < argArray.length-1; i++) {
-    //
-    //
-    //   mod = argArray[i+1] % lastDigitPattern.length;
-    //
-    //   if (!mod) {
-    //     mod = lastDigitPattern.length;
-    //   }
-    //
-    //   digit = lastDigitPattern[mod-1];
-    //
+    //   console.log(argArray);
     // }
     //
-    // return digit
+    // if (argArray[1]%lastDigitPattern.length-1 <0) {
+    //   return lastDigitPattern[lastDigitPattern.length-1]
+    // }else {
+    //   return lastDigitPattern[argArray[1]%lastDigitPattern.length-1]
+    // }
+
+
+
+
+
+
+
+    if (argArray[0] > argArray[1]) {
+      lastDigitPattern.reverse();
+      for (var i = 1; i < argArray.length; i++) {
+        argArray[i] = lastDigit(argArray[i])
+      }
+    }
+
+
+    console.log(argArray);
+
+
+
+    // works for most but not for some.
+
+    for (var i = 0; i < argArray.length-1; i++) {
+
+
+      mod = argArray[i+1] % lastDigitPattern.length;
+
+      if (!mod) {
+        mod = lastDigitPattern.length;
+      }
+
+      digit = lastDigitPattern[mod-1];
+
+    }
+
+    return digit
 
 
     // establish power pattern for first argument
