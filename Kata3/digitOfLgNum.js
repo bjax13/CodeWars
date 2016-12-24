@@ -51,13 +51,33 @@ function lastDigit(array) {
     //   return Math.pow(+str1.slice(-1), (+str2.slice(-2) % 4) || 4) % 10;
     // }
 
+    // test if only 2 args in array if so use simple function
     if (argArray.length === 2) {
       return lastOf2(argArray[0], (argArray[1]%100))
     }
 
-    function lastOf2(num1, num2) {
-      return Math.pow(num1, (num2 % 4) || 4) %10;
+    // uses if array has 3 + items in array
+
+    for (var i = argArray.length-2; i >= 0; i--) {
+      if (i===0) {
+        if (argArray[i+1].length >99) {
+          argArray[i] = lastOf2((lastDigit(argArray[i])), last2Digit(argArray[i+1]))
+        }else {
+          argArray[i] = lastOf2((lastDigit(argArray[i])), (argArray[i+1]))
+        }
+      }else {
+        if (argArray[i+1].length >99) {
+          argArray[i] = last2Of2((lastDigit(argArray[i])), last2Digit(argArray[i+1]))
+        }else {
+          argArray[i] = last2Of2((lastDigit(argArray[i])), (argArray[i+1]))
+        }
+      }
+
+
+
     }
+
+    return argArray[0]
 
 
 
@@ -66,10 +86,21 @@ function lastDigit(array) {
     // Link -> https://brilliant.org/wiki/finding-the-last-digit-of-a-power/
     // the link explains a pattern for powers.
 
+    //function uses shortcuts as noted in links above to get last digit with 2 args
+    function lastOf2(num1, num2) {
+      return Math.pow(num1, (num2 % 4) || 4) %10;
+    }
+    //
+    function last2Of2(num1, num2) {
+      console.log(num1);
+      console.log(num2);
+      console.log((num2 % 4));
+      console.log((num2 % 4) + 4);
+      console.log("break");
 
-
-
-
+      console.log(Math.pow(num1, (num2 % 4) + 4));
+      return Math.pow(num1, (num2 % 4) + 4) %100;
+    }
 
     //func to find last digit of a number
     function lastDigit(num) {
@@ -79,9 +110,6 @@ function lastDigit(array) {
     function last2Digit(num) {
         return parseInt(num.toString()[num.toString().length - 2])
     }
-
-
-
 
 
 }
