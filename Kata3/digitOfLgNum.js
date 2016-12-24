@@ -45,6 +45,20 @@ function lastDigit(array) {
       return digit;
     }
 
+    // var lastDigit = function(str1, str2){
+    //   if(str2 == '0')
+    //     return 1;
+    //   return Math.pow(+str1.slice(-1), (+str2.slice(-2) % 4) || 4) % 10;
+    // }
+
+    if (argArray.length === 2) {
+      return lastOf2(argArray[0], (argArray[1]%100))
+    }
+
+    function lastOf2(num1, num2) {
+      return Math.pow(num1, (num2 % 4) || 4) %10;
+    }
+
 
 
     // finding the last digits is best accomplished by using a pattern links below explain more
