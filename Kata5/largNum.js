@@ -1,23 +1,32 @@
-var lastDigit= (function(n1, ex){
-  var lookup={}; //make lookup table for exponent mod 4
-  for(var n=0;n<10;n++){
-    lookup[n] = {};
-    for(var x=1;x<5;x++){
-      lookup[n][x%4]=Math.pow(n,x)%10
-    }
-  }
-  return function(n1, ex){
-    if(ex==="0") return 1;
-    var n=n1.substr(n1.length-1);
-    var e=ex.substr(ex.length-2);//need last 2 for mod 4
-    var r=lookup[n] [e%4]
-    return r;
-  }
-})();
+var lastDigit = function(str1, str2){
+  if(str2 == '0')
+    return 1;
+  return Math.pow(+str1.slice(-1), (+str2.slice(-2) % 4) || 4) % 10;
+}
+
+
+// var lastDigit= (function(n1, ex){
+//   var lookup={}; //make lookup table for exponent mod 4
+//   for(var n=0;n<10;n++){
+//     lookup[n] = {};
+//     for(var x=1;x<5;x++){
+//       lookup[n][x%4]=Math.pow(n,x)%10
+//     }
+//   }
+//   return function(n1, ex){
+//     if(ex==="0") return 1;
+//     var n=n1.substr(n1.length-1);
+//     var e=ex.substr(ex.length-2);//need last 2 for mod 4
+//     var r=lookup[n] [e%4]
+//     return r;
+//   }
+// })();
+
+
 
  lastDigit('4', '6')
 
-// did not complete above is best practice.  below is my attempt. 
+// did not complete above is best practice.  below is my attempt.
 
 // var lastDigit = function(str1, str2){
 //   console.log(str1);
