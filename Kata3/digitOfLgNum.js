@@ -1,3 +1,21 @@
+// ******** Codwars problam
+
+
+// For a given list [x1, x2, x3, ..., xn] compute the last (decimal) digit of x1 ^ (x2 ^ (x3 ^ (... ^ xn))).
+//
+// E. g.,
+//
+// lastDigit([3, 4, 2]) === 1
+// because 3 ^ (4 ^ 2) = 3 ^ 16 = 43046721.
+//
+// Beware: powers grow incredibly fast. For example, 9 ^ (9 ^ 9) has more than 369 millions of digits. lastDigit has to deal with such numbers efficiently.
+//
+// Corner cases: we assume that 0 ^ 0 = 1 and that lastDigit of an empty list equals to 1.
+//
+// This kata generalizes Last digit of a large number; you may find useful to solve it beforehand.
+
+//   My solution 
+
 function lastDigit(array) {
     console.log(array);
     var argArray = array;
@@ -45,11 +63,6 @@ function lastDigit(array) {
       return digit;
     }
 
-    // var lastDigit = function(str1, str2){
-    //   if(str2 == '0')
-    //     return 1;
-    //   return Math.pow(+str1.slice(-1), (+str2.slice(-2) % 4) || 4) % 10;
-    // }
 
     // test if only 2 args in array if so use simple function
     if (argArray.length === 2) {
@@ -57,6 +70,8 @@ function lastDigit(array) {
     }
 
     // uses if array has 3 + items in array
+
+    // for powers of powers return last 2 digits then once on first arg return last digit
 
     for (var i = argArray.length-2; i >= 0; i--) {
       if (i===0) {
@@ -90,15 +105,8 @@ function lastDigit(array) {
     function lastOf2(num1, num2) {
       return Math.pow(num1, (num2 % 4) || 4) %10;
     }
-    //
+    //function uses shortcuts as noted in links above to get last 2 digits
     function last2Of2(num1, num2) {
-      console.log(num1);
-      console.log(num2);
-      console.log((num2 % 4));
-      console.log((num2 % 4) + 4);
-      console.log("break");
-
-      console.log(Math.pow(num1, (num2 % 4) + 4));
       return Math.pow(num1, (num2 % 4) + 4) %100;
     }
 
