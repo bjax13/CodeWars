@@ -2,8 +2,6 @@ function lastDigit(array) {
     console.log(array);
     var argArray = array;
 
-
-
     // test if array is empty
     if (argArray.length === 0) {
         return 1;
@@ -11,7 +9,7 @@ function lastDigit(array) {
 
     argArray[0] = lastDigit(argArray[0]);
 
-    // test if array has length of 1 return last digit if so
+    // test if array has length of 1 return last digit
     if (argArray.length === 1) {
       return argArray[0]
     }
@@ -41,95 +39,21 @@ function lastDigit(array) {
     }
 
     var digit = argArray[0];
-    var mod = 0;
-    var lastDigitPattern = powerPattern(digit);
 
+    // since the powers of 1 5 and 6 always end in 1 5 or 6  quickly return befor doing calculations
     if (digit===1 || digit===5 ||digit===6) {
       return digit;
     }
 
-    // reduce each to last digit of each power
-
-    // for (var i = argArray.length-1; i >=1 ; i--) {
-    //   argArray[i] = argArray[i]% lastDigitPattern.length
-    //
-    //   argArray[i] = lastDigitPattern[argArray[i]];
-    //
-    //   console.log(argArray);
-    // }
-    //
-    // var total;
-    //
-    // for (var i = argArray.length-1; i >=1 ; i--) {
-    //   total = Math.pow(argArray[i-1],argArray[i])
-    //
-    //   argArray[i-1]= total% lastDigitPattern.length
-    //
-    //   argArray[i-1] = lastDigitPattern[argArray[i-1]];
-    //
-    //   console.log(argArray);
-    // }
-    //
-    // if (argArray[1]%lastDigitPattern.length-1 <0) {
-    //   return lastDigitPattern[lastDigitPattern.length-1]
-    // }else {
-    //   return lastDigitPattern[argArray[1]%lastDigitPattern.length-1]
-    // }
 
 
-
-
-
-
-
-    if (argArray[0] > argArray[1]) {
-      lastDigitPattern.reverse();
-      for (var i = 1; i < argArray.length; i++) {
-        argArray[i] = lastDigit(argArray[i])
-      }
-    }
-
-
-    console.log(argArray);
-
-
-
-    // works for most but not for some.
-
-    for (var i = 0; i < argArray.length-1; i++) {
-
-
-      mod = argArray[i+1] % lastDigitPattern.length;
-
-      if (!mod) {
-        mod = lastDigitPattern.length;
-      }
-
-      digit = lastDigitPattern[mod-1];
-
-    }
-
-    return digit
-
-
-    // establish power pattern for first argument
+    // finding the last digits is best accomplished by using a pattern links below explain more
     // Link -> http://mathcentral.uregina.ca/qq/database/qq.09.04/landon1.html
     // Link -> https://brilliant.org/wiki/finding-the-last-digit-of-a-power/
     // the link explains a pattern for powers.
 
-    function powerPattern(num) {
-        var int = lastDigit(num);
-        var pattern = [];
 
-        for (var i = 1; i < 5; i++) {
-            var last = lastDigit(Math.pow(num, i))
-            if (pattern.indexOf(last) !== -1) {
-                return pattern;
-            }
-            pattern.push(last)
-        }
-        return pattern;
-    }
+
 
 
 
@@ -137,10 +61,14 @@ function lastDigit(array) {
     function lastDigit(num) {
         return parseInt(num.toString()[num.toString().length - 1])
     }
+    //func to find last two digit of a number
+    function last2Digit(num) {
+        return parseInt(num.toString()[num.toString().length - 2])
+    }
 
 
 
-    console.log(argArray);
+
 
 }
 // 1
