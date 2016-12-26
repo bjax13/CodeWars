@@ -34,3 +34,31 @@ function removeZeros(array) {
 }
 
 console.log(removeZeros([7, 2, 3, 0, 4, 6, 0, 0, 13, 0, 78, 0, 0, 19, 14]));
+
+
+// Best practice
+// the majority of solutions were in line with my solution.
+// the following after reviewing would be best practice since
+// the tow functions are split into functions for reusibility 
+
+// function removeZeros(array) {
+//     var end = array.length;
+//     for (var i = 0; i < end; i++) {
+//         if (array[i] === 0 || array[i] === "0") {
+//             arrayShiftToEnd(array, i);
+//             i--;
+//             end--;
+//         }
+//     }
+//     return array;
+// }
+//
+// function arrayShiftToEnd(array, n) {
+//     var end = array[n]
+//     for(var i = n; i <  array.length; i++) {
+//         array[i] = array[i + 1]
+//     }
+//     array[array.length - 1] = end;
+//
+//     return array
+// }
