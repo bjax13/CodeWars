@@ -17,8 +17,20 @@ function removeZeros(array) {
     if (array[i]=== 0 || array[i] === '0') {
       holder = array[i];
 
-      
+      for (var j = i; j < array.length; j++) {
+
+        if (j + 1 === array.length) {
+          array[j]= holder;
+        }else {
+          array[j]= array[j+1];
+        }
+
+      }
+      i--;
+      arrLength--;
     }
   }
   return array;
 }
+
+console.log(removeZeros([7, 2, 3, 0, 4, 6, 0, 0, 13, 0, 78, 0, 0, 19, 14]));
