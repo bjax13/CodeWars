@@ -10,9 +10,13 @@ function removeZeros(array) {
   //such as .shift(), .push(), etc
 
   // the correctly sorted array should be returned.
+  var holder;
+  var arrLength = array.length
 
-  for (var i = 0; i < array.length; i++) {
+  for (var i = 0; i < arrLength; i++) {
     if (array[i]=== 0 || array[i] === '0') {
+      holder = array[i];
+
       
     }
   }
