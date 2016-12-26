@@ -5,16 +5,8 @@ Just an area where I can work on CodeWars problems in my own enviroment.
 ___________________________ Current problem _______________
 # Paste problem text below.
 _____________________________________________________
-Write a function that takes an array of values and moves all elements that are zero to the end of the array, otherwise preserving the order of the array. The zero elements must also maintain the order in which they occurred.
+There are a series of 10 bombs about to go off! Diffuse them all! Simple, right?
 
-For example, the following array
+Note: This is not an ordinary Kata, but more of a series of puzzles. The point is to figure out what you are supposed to do, then how to do it. Instructions are intentionally left vague.
 
-[7, 2, 3, 0, 4, 6, 0, 0, 13, 0, 78, 0, 0, 19, 14]
-
-is transformed into
-
-[7, 2, 3, 4, 6, 13, 78, 19, 14, 0, 0, 0, 0, 0, 0]
-
-Zero elements are defined by either 0 or "0". Some tests may include elements that are not number literals.
-
-You are NOT allowed to use any temporary arrays or objects. You are also not allowed to use any Array.prototype or Object.prototype methods.
+https://www.codewars.com/kata/diffuse-the-bombs/train/javascript
