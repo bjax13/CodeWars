@@ -8,6 +8,9 @@
 //   return /"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"/.test(password);
 // }
 
+
+// my solution
+
 function validate(password) {
   console.log(password);
   var passed = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])([^\s\b]).{6,}$/.test(password);
@@ -21,6 +24,12 @@ function validate(password) {
   console.log(passed)
   return passed;
 }
+
+// best practice 1 liner was close not quite there.
+
+// function validate(password) {
+//   return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,}$/.test(password);
+// }
 
 
 
