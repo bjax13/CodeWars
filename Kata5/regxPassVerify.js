@@ -10,8 +10,18 @@
 
 function validate(password) {
   console.log(password);
-  return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\s]).{6,}$/.test(password);
+  var passed = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])([^\s\b]).{6,}$/.test(password);
+
+  if(/[^a-zA-Z0-9]/.test(password)) {
+    passed = false;
+    console.log('inif');
 }
+
+
+  console.log(passed)
+  return passed;
+}
+
 
 
 // function validate(password) {
@@ -19,3 +29,6 @@ function validate(password) {
 //   console.log(/([a-zA-Z0-9]).{6,}$/.test(password));
 //   return /^([a-zA-Z0-9])([^\s]).{6,}$/.test(password);
 // }
+
+validate('fjd3 IR9');
+validate('fjd3IR9.;');
