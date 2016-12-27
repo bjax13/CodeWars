@@ -10,5 +10,5 @@
 
 function validate(password) {
   console.log(password);
-  return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$/.test(password);
+  return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\s]).{6,}$/.test(password);
 }
