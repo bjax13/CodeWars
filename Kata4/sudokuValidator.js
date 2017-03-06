@@ -56,9 +56,6 @@ function validSolution(board){
     }
     return testRows(blocksAsRow);
   }
-
-
-
   return (testColumns(board) * testRows(board) * testBlocks(board))===1;
 }
 
