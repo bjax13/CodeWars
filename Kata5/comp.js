@@ -1,19 +1,20 @@
-function warsOne(num) {
-  var string = num.toString().split('');
-  console.log(string);
+function solution(num) {
+  var count = 0 ;
+
+for (var i = 0; i < num; i++) {
 
 
-
-  for (var i = 0; i < string.length; i++) {
-
-    for (var j = i+1; j < string.length; j++) {
-      if (string[i]<string[j]) {
-        var temp = string[j]
-        string[j]
-      }
-    }
+  if (i%3 ===  0 && i% 5 ===0) {
+    count += i;
+  }else if (i% 5 ===0) {
+    count += i;
+  }
+}else if (i%3 ===  0) {
+    count += i;
   }
 }
 
+return count;
+}
 
-warsOne(21445);
+evensAndOdds("This website is for losers LOL!");
