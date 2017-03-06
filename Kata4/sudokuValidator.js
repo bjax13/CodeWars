@@ -1,0 +1,3 @@
+function validSolution(board){
+  //TODO
+}
