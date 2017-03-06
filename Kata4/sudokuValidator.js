@@ -19,7 +19,6 @@ function validSolution(board){
     }
     return true;
   }
-
   function testColumns(board) {
     var columnAsRow = [[0, 0, 0, 0, 0, 0, 0, 0, 0],
                        [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -36,16 +35,31 @@ function validSolution(board){
       }
     }
     return testRows(columnAsRow);
-
   }
 
   function testBlocks() {
+    var blocksAsRowTemplate = [[1, 1, 1, 2, 2, 2, 3, 3, 3],
+                               [1, 1, 1, 2, 2, 2, 3, 3, 3],
+                               [1, 1, 1, 2, 2, 2, 3, 3, 3],
+                               [4, 4, 4, 5, 5, 5, 6, 6, 6],
+                               [4, 4, 4, 5, 5, 5, 6, 6, 6],
+                               [4, 4, 4, 5, 5, 5, 6, 6, 6],
+                               [7, 7, 7, 8, 8, 8, 9, 9, 9],
+                               [7, 7, 7, 8, 8, 8, 9, 9, 9],
+                               [7, 7, 7, 8, 8, 8, 9, 9, 9]];
+    var blocksAsRow = [ [],[],[],[],[],[],[],[],[] ];
 
+    for (var i = 0; i < board.length; i++) {
+      for (var j = 0; j < board[i].length; j++) {
+        blocksAsRow[blocksAsRowTemplate[i][j]-1].push(board[i][j]);
+      }
+    }
+    return testRows(blocksAsRow);
   }
 
-  testColumns(board);
 
-  return testColumns(board)
+
+  return (testColumns(board) * testRows(board) * testBlocks(board))===1;
 }
 
 console.log(validSolution([[5, 3, 4, 6, 7, 8, 9, 1, 2],
