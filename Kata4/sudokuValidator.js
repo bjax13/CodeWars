@@ -16,22 +16,36 @@ function validSolution(board){
       }else if (uniq(board[i]).length !== 9) {
         return false
       }
-      console.log(board[i]);
     }
     return true;
   }
 
-  function testColumns() {
+  function testColumns(board) {
+    var columnAsRow = [[0, 0, 0, 0, 0, 0, 0, 0, 0],
+                       [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                       [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                       [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                       [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                       [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                       [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                       [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                       [0, 0, 0, 0, 0, 0, 0, 0, 0]];
+    for (var i = 0; i < board.length; i++) {
+      for (var j = 0; j < board[i].length; j++) {
+        columnAsRow[j][i] = (board[i][j])
+      }
+    }
+    return testRows(columnAsRow);
 
-  } 
+  }
 
   function testBlocks() {
 
   }
 
+  testColumns(board);
 
-
-  return testRows(board)
+  return testColumns(board)
 }
 
 console.log(validSolution([[5, 3, 4, 6, 7, 8, 9, 1, 2],
