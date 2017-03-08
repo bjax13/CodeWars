@@ -12,8 +12,7 @@ function bowlingScore(frames) {
         nextFrame.push(arrFrams[i])
         nextFrame.push(arrFrams[i+1])
         var nextFrameStr = nextFrame.join('');
-        console.log(nextFrameStr);
-        nextFrame = nextFrameStr.split('');
+        nextFrame = nextFrameStr.split('');0
         for (var j = 0; j < 3; j++) {
           if (nextFrame[j] === 'X') {
             score+=10;
@@ -25,21 +24,62 @@ function bowlingScore(frames) {
           }
         }
       }else {
-        var nextTwo = [];
+        var nextFrame = [];
+        nextFrame.push(arrFrams[i])
+        nextFrame.push(arrFrams[i+1])
+        nextFrame.push(arrFrams[i+2])
+        var nextFrameStr = nextFrame.join('');
+
+        nextFrame = nextFrameStr.split('');0
+        for (var j = 0; j < 3; j++) {
+          if (nextFrame[j] === 'X') {
+            score+=10;
+          }else if (nextFrame[j] === '/') {
+            score-= parseInt(nextFrame[j-1]);
+            score+=10
+          }else {
+            score+= parseInt(nextFrame[j]);
+          }
+        }
       }
     }else if (arrFrams[i].length === 2) {
       var temp = arrFrams[i].split('');
-      console.log(temp);
+
       if (temp[1] === '/') {
         score+= 10
+        temp2 = arrFrams[i+1]
+        if (temp2.length === 1) {
+          score+=10
+        }else if (temp2.length >1) {
+          tempArr = temp2.split('');
+          if (tempArr[0] === 'X') {
+            score+= 10; 
+          }else {
+            score+= parseInt(tempArr[0]);
+          }
+        }
       }else{
         score+= parseInt(temp[0]);
         score+= parseInt(temp[1]);
       }
+    }else if (arrFrams[i].length === 3) {
+      var temp = arrFrams[i].split('');
+
+      for (var j = 0; j < 3; j++) {
+        if (temp[j] === 'X') {
+          score+=10;
+        }else if (temp[j] === '/') {
+          score-= parseInt(temp[j-1]);
+          score+=10
+        }else {
+          score+= parseInt(temp[j]);
+        }
+      }
     }
+    console.log("Frame"+ i + " - " + score);
   }
   return score;
 }
 
 console.log(bowlingScore('11 11 11 11 11 11 11 11 11 11'));
-console.log(bowlingScore('X X X X X X X X X XXX'));
+console.log(bowlingScore('60 X 21 3/ 18 44 X 41 4/ XXX'));
