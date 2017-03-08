@@ -13,6 +13,17 @@ function bowlingScore(frames) {
         nextFrame.push(arrFrams[i+1])
         var nextFrameStr = nextFrame.join('');
         console.log(nextFrameStr);
+        nextFrame = nextFrameStr.split('');
+        for (var j = 0; j < 3; j++) {
+          if (nextFrame[j] === 'X') {
+            score+=10;
+          }else if (nextFrame[j] === '/') {
+            score-= nextFrame[j-1];
+            score+=10
+          }else {
+            score+= parseInt(nextFrame[j]);
+          }
+        }
       }else {
         var nextTwo = [];
       }
