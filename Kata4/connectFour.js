@@ -75,9 +75,19 @@ function connectFour(board) {
 
   }
 
+  function isFull(board) {
+    for (var i = 0; i < board[0].length; i++) {
+      if (board[0][i] === '-') {
+        return false;
+      }
+    }
+    return true;
+  }
+
   var rows = checkRows(board);
   var column = checkColumns(board);
   var diag = checkDiag(board);
+  var full = null;
 
   if (rows === "Y" || rows === "R") {
     return rows;
