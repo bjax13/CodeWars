@@ -75,7 +75,21 @@ function connectFour(board) {
 
   }
 
-  return checkDiag(board);
+  var rows = checkRows(board);
+  var column = checkColumns(board);
+  var diag = checkDiag(board);
+
+  if (rows === "Y" || rows === "R") {
+    return rows;
+  }else if (column === "Y" || column === "R") {
+    return column
+  }else if (diag === "Y" || diag === "R") {
+    return diag
+  }else if (full) {
+    return 'draw'
+  }else {
+    return 'in progress'
+  }
 }
 
 console.log(connectFour([['-','-','-','-','-','-','-'],
