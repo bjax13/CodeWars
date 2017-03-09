@@ -30,12 +30,28 @@ function connectFour(board) {
       yellowCount = 0;
     }
   }
-  return checkRows(board);
+  function checkColumns(board) {
+    var columnAsRow = [['-','-','-','-','-','-','-'],
+                       ['-','-','-','-','-','-','-'],
+                       ['-','-','-','-','-','-','-'],
+                       ['-','-','-','Y','R','R','R'],
+                       ['-','-','-','Y','Y','R','Y'],
+                       ['-','-','-','Y','R','Y','Y'],
+                       ['-','-','Y','Y','R','R','R']];
+    for (var i = 0; i < board.length; i++) {
+      for (var j = 0; j < board[i].length; j++) {
+        columnAsRow[j][i] = (board[i][j])
+      }
+    }
+    return checkRows(columnAsRow);
+  }
+
+  return checkColumns(board);
 }
 
 console.log(connectFour([['-','-','-','-','-','-','-'],
  ['-','-','-','-','-','-','-'],
  ['-','-','-','Y','R','R','R'],
- ['-','-','-','Y','Y','R','Y'],
- ['-','-','-','Y','R','Y','Y'],
+ ['-','-','-','R','Y','R','Y'],
+ ['-','-','-','Y','R','R','Y'],
  ['-','-','Y','Y','R','R','R']]));
