@@ -47,7 +47,7 @@ function connectFour(board) {
   }
   function checkDiag(board) {
 
-    function test(X) {
+    function test(X,board) {
       var win=4, len=board.length, r=0, c=0, dr=0, dl=0;
       for(var i=0;i<len;i++){
           for(var j=0;j<len;j++){
@@ -64,9 +64,29 @@ function connectFour(board) {
       }
     }
 
-    if (test('Y')) {
+    function reverseTest(board) {
+      console.log(board);
+      var reverseBoard = [['-','-','-','-','-','-','-'],
+                          ['-','-','-','-','-','-','-'],
+                          ['-','-','-','-','-','-','-'],
+                          ['-','-','-','-','-','-','-'],
+                          ['-','-','-','-','-','-','-'],
+                          ['-','-','-','-','-','-','-']];
+      for (var i = 0; i < board.length; i++) {
+        var z = 0;
+        for (var j = board[i].length-1; j >= 0; j--) {
+          reverseBoard[i][z]= board[i][j];
+          z++;
+        }
+        z=0
+      }
+      console.log(reverseBoard);
+      return reverseBoard
+    }
+
+    if (test('Y',board) || test('Y',reverseTest(board))) {
       return 'Y'
-    }else if (test('R')) {
+    }else if (test('R',board)) {
       return 'R'
     }else {
       return null;
