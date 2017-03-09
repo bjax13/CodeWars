@@ -1,5 +1,5 @@
 function connectFour(board) {
-  // Your code goes here
+  // 'Y'our code goes here
 
   function checkRows(board) {
     redCount = 0;
@@ -51,8 +51,8 @@ function connectFour(board) {
       var win=4, len=board.length, r=0, c=0, dr=0, dl=0;
       for(var i=0;i<len;i++){
           for(var j=0;j<len;j++){
-              (board[j][i]===X) ? c++ : c=0;
-              (board[i][j]===X) ? r++ : r=0;
+              // (board[j][i]===X) ? c++ : c=0;
+              // (board[i][j]===X) ? r++ : r=0;
               if(board[i][j]===X && i<len-win+1){ dr=0; dl=0;
                   for(var z=0;z<win;z++){
                       (board[i+z][j+z]===X) ? dr++ : dr=0;
@@ -90,10 +90,13 @@ function connectFour(board) {
   var full = null;
 
   if (rows === "Y" || rows === "R") {
+    console.log('rows');
     return rows;
   }else if (column === "Y" || column === "R") {
+    console.log('colums');
     return column
   }else if (diag === "Y" || diag === "R") {
+    console.log('diag');
     return diag
   }else if (full) {
     return 'draw'
@@ -102,9 +105,11 @@ function connectFour(board) {
   }
 }
 
-console.log(connectFour([['-','-','-','-','-','-','-'],
-                         ['-','-','-','-','-','-','-'],
-                         ['-','-','-','Y','R','Y','R'],
-                         ['-','-','-','R','Y','R','Y'],
-                         ['-','-','-','Y','R','Y','Y'],
-                         ['-','-','Y','Y','R','R','Y']]));
+console.log(connectFour([
+  ['Y','R','Y','R','Y','R','Y'],
+  ['R','Y','R','R','Y','R','Y'],
+  ['Y','Y','R','R','R','Y','R'],
+  ['R','R','Y','Y','Y','R','Y'],
+  ['Y','Y','Y','R','Y','R','Y'],
+  ['R','Y','R','R','R','Y','R']
+]));
