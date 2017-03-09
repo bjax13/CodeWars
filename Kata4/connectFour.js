@@ -45,13 +45,42 @@ function connectFour(board) {
     }
     return checkRows(columnAsRow);
   }
+  function checkDiag(board) {
 
-  return checkColumns(board);
+    function test(X) {
+      var win=4, len=board.length, r=0, c=0, dr=0, dl=0;
+      for(var i=0;i<len;i++){
+          for(var j=0;j<len;j++){
+              (board[j][i]===X) ? c++ : c=0;
+              (board[i][j]===X) ? r++ : r=0;
+              if(board[i][j]===X && i<len-win+1){ dr=0; dl=0;
+                  for(var z=0;z<win;z++){
+                      (board[i+z][j+z]===X) ? dr++ : dr=0;
+                      (board[i+z][j-z]===X) ? dl++ : dl=0;
+                  }
+              }
+              if(c===win || r===win || dr===win || dl===win){return true;}
+          } r=0;
+      }
+    }
+
+    if (test('Y')) {
+      return 'Y'
+    }else if (test('R')) {
+      return 'R'
+    }else {
+      return null;
+    }
+
+
+  }
+
+  return checkDiag(board);
 }
 
 console.log(connectFour([['-','-','-','-','-','-','-'],
- ['-','-','-','-','-','-','-'],
- ['-','-','-','Y','R','R','R'],
- ['-','-','-','R','Y','R','Y'],
- ['-','-','-','Y','R','R','Y'],
- ['-','-','Y','Y','R','R','R']]));
+                         ['-','-','-','-','-','-','-'],
+                         ['-','-','-','Y','R','Y','R'],
+                         ['-','-','-','R','Y','R','Y'],
+                         ['-','-','-','Y','R','Y','Y'],
+                         ['-','-','Y','Y','R','R','Y']]));
