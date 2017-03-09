@@ -87,7 +87,7 @@ function connectFour(board) {
   var rows = checkRows(board);
   var column = checkColumns(board);
   var diag = checkDiag(board);
-  var full = null;
+  var full = isFull(board);
 
   if (rows === "Y" || rows === "R") {
     console.log('rows');
