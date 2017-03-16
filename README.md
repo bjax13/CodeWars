@@ -4,8 +4,8 @@ ___________________________ Current problem _______________
 # Paste problem text below.
 ____________________________________________________
 
-Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
+An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram. Ignore letter case.
 
-domainName("http://github.com/carbonfive/raygun") == "github"
-domainName("http://www.zombie-bites.com") == "zombie-bites"
-domainName("https://www.cnet.com") == "cnet"
+isIsogram( "Dermatoglyphics" ) == true
+isIsogram( "aba" ) == false
+isIsogram( "moOse" ) == false // -- ignore letter case
