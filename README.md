@@ -4,23 +4,26 @@ ___________________________ Current problem _______________
 # Paste problem text below.
 ____________________________________________________
 
-A square of squares
+Given a Sudoku data structure with size NxN, N > 0 and √N == integer, write a method to validate if it has been filled out correctly.
 
-You like building blocks. You especially like building blocks that are squares. And what you even like more, is to arrange them into a square of square building blocks!
+The data structure is a multi-dimensional Array(in Rust: Vec<Vec<u32>>) , ie:
 
-However, sometimes, you can't arrange them into a square. Instead, you end up with an ordinary rectangle! Those blasted things! If you just had a way to know, whether you're currently working in vain… Wait! That's it! You just have to check if your number of building blocks is a perfect square.
+[
+  [7,8,4,  1,5,9,  3,2,6],
+  [5,3,9,  6,7,2,  8,4,1],
+  [6,1,2,  4,3,8,  7,5,9],
 
-Task
+  [9,2,8,  7,1,5,  4,6,3],
+  [3,5,7,  8,4,6,  1,9,2],
+  [4,6,1,  9,2,3,  5,8,7],
 
-Given an integral number, determine if it's a square number:
+  [8,7,6,  3,9,4,  2,1,5],
+  [2,4,3,  5,6,1,  9,7,8],
+  [1,9,5,  2,8,7,  6,3,4]
+]
+Rules for validation
 
-In mathematics, a square number or perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself.
-The tests will always use some integral number, so don't worry about that in dynamic typed languages.
-
-Examples
-
-isSquare(-1) // => false
-isSquare( 3) // => false
-isSquare( 4) // => true
-isSquare(25) // => true
-isSquare(26) // => false
+Data structure dimension: NxN where N > 0 and √N == integer
+Rows may only contain integers: 1..N (N included)
+Columns may only contain integers: 1..N (N included)
+'Little squares' (3x3 in example above) may also only contain integers: 1..N (N included)
