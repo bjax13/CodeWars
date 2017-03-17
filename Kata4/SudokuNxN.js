@@ -1,4 +1,5 @@
 var Sudoku = function(data) {
+    console.log("***data***");
     console.log(data);
     var maxNum = data[0].length;
     var valid = false;
@@ -36,6 +37,7 @@ var Sudoku = function(data) {
         var sumh = [];
         var sumv = [];
         var osums = [];
+
         //add sub arrays for osums
         for (var j = 0; j < sqrSize; j++) {
             osums.push([]);
@@ -49,9 +51,15 @@ var Sudoku = function(data) {
 
         for (var i = 0; i < maxNum; i++) {
             for (var j = 0; j < maxNum; j++) {
-                sumh[i] += board[i][j];
-                sumv[j] += board[i][j];
-                osums[Math.floor(i / sqrSize)][Math.floor(j / sqrSize)] += board[i][j];
+                //validate values are integers. 
+                if (Number.isInteger(board[i][j])) {
+                  sumh[i] += board[i][j];
+                  sumv[j] += board[i][j];
+                  osums[Math.floor(i / sqrSize)][Math.floor(j / sqrSize)] += board[i][j];
+                }else {
+                  return false;
+                }
+
             }
         }
         for (var i = 0; i < sqrSize; i++)
