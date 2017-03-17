@@ -35,7 +35,7 @@ var Sudoku = function(data)
 
   function validSolution(board){
     var sumh = [];
-    var sumy = [];
+    var sumv = [];
     var osums = [];
 
     //add sub arrays for osums
@@ -45,28 +45,24 @@ var Sudoku = function(data)
     //fill test array to proper size for N
     for (var i = 0; i < maxNum; i++) {
       sumh.push(0);
-      sumy.push(0);
+      sumv.push(0);
       osums[Math.floor(i/sqrSize)].push(0)
     }
 
-    for (var i=0;i<9;i++){
-      for (var j=0;j<9;j++){
+    for (var i=0;i<maxNum;i++){
+      for (var j=0;j<maxNum;j++){
         sumh[i] += board[i][j];
         sumv[j] += board[i][j];
-        osums[Math.floor(i/3)][Math.floor(j/3)] += board[i][j];
+        osums[Math.floor(i/sqrSize)][Math.floor(j/sqrSize)] += board[i][j];
       }
     }
-    for (var i=0;i<3;i++) if (!osums[i].every(equalsValidSum)) return false;
+    for (var i=0;i<sqrSize;i++) if (!osums[i].every(equalsValidSum)) return false;
     return (sumh.every(equalsValidSum) && sumv.every(equalsValidSum));
 
   }
 
-  validSolution(data);
+  valid  = validSolution(data);
 
-
-  if ((data)){
-    valid = true;
-  }
 
 
   //   Public methods
