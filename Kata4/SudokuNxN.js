@@ -1,9 +1,14 @@
 var Sudoku = function(data)
 {
+  console.log(data);
   var valid = false;
   //   Private methods
   // -------------------------
 
+  function sumOfNums(n) {
+    return ((n*(n+1))/2)
+  }
+  console.log(sumOfNums(data[0].length));
 
   function isSquare(n){
     return (Math.sqrt(n)%1=== 0 ) ? true: false
