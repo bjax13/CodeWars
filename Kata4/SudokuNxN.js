@@ -37,22 +37,17 @@ var Sudoku = function(data)
     var sumh = [];
     var sumy = [];
     var osums = [];
+
+    //add sub arrays for osums
     for (var j = 0; j < sqrSize; j++) {
       osums.push([]);
     }
-
+    //fill test array to proper size for N
     for (var i = 0; i < maxNum; i++) {
       sumh.push(0);
       sumy.push(0);
-      osums
+      osums[Math.floor(i/sqrSize)].push(0)
     }
-
-
-    var sumh = [0,0,0,0,0,0,0,0,0];
-    var sumv = [0,0,0,0,0,0,0,0,0];
-    osums = [[0,0,0],[0,0,0],[0,0,0]];
-
-
 
     for (var i=0;i<9;i++){
       for (var j=0;j<9;j++){
@@ -63,7 +58,10 @@ var Sudoku = function(data)
     }
     for (var i=0;i<3;i++) if (!osums[i].every(equalsValidSum)) return false;
     return (sumh.every(equalsValidSum) && sumv.every(equalsValidSum));
+
   }
+
+  validSolution(data);
 
 
   if ((data)){
