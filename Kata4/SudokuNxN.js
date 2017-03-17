@@ -9,6 +9,7 @@ var Sudoku = function(data)
     return (Math.sqrt(n)%1=== 0 ) ? true: false
   }
 
+  //test dementions of data.  If not square return false
   if (!(isSquare(data[0].length))) {
     valid = false;
     return {
