@@ -31,8 +31,10 @@ function smaller(nums) {
 
     if (stack.length === 0) {
       countArr[i] = 0;
-    }else {
+    }else if (nums[i]> stack[0]) {
       countArr[i] =locationOf(nums[i],stack)+1;
+    }else{
+      countArr[i] =0;
     }
 
     stack = insert(nums[i],stack)
@@ -43,4 +45,4 @@ function smaller(nums) {
 }
 
 
-console.log(smaller([5, 4, 3, 2, 1]));
+console.log(smaller([1,2,3]));
