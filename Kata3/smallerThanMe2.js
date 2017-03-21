@@ -28,34 +28,19 @@ function smaller(nums) {
     console.log("Number -"+nums[i]);
     console.log("Location -"+locationOf(nums[i],stack));
     console.log("stack -"+stack[locationOf(nums[i],stack)]);
-    while (stack.length>0 && nums[i]<stack[locationOf(nums[i],stack)]) {
-        countArr[i] +=stack.length;
-        console.log("in loop");
-      }
+
+    if (stack.length === 0) {
+      countArr[i] = 0;
+    }else {
+      countArr[i] =locationOf(nums[i],stack)+1;
+    }
 
     stack = insert(nums[i],stack)
 
   }
 
-
-
-  // var array = [1,2,3,4,5,6,7,8,9];
-  // var element = 3.5;
-
-  //
-  // console.log(insert(element, array));
-
-  // for (var x in nums) {
-  //   while (stack.length>0 && x<nums[stack[i-1]]) {
-  //     countArr[stack.pop()] +=1;
-  //   }
-  //   stack.push(i)
-  //   i++;
-  // }
-
-
   return   countArr;
 }
 
 
-console.log(smaller([5, 4, 6, 2, 1]));
+console.log(smaller([5, 4, 3, 2, 1]));
