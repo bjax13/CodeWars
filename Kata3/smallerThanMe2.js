@@ -24,41 +24,26 @@ function smaller(nums) {
   }
 
   for (var i = nums.length-1; i >= 0 ; i--) {
-    console.log(stack);
-    console.log("Number -"+nums[i]);
-    console.log("Location -"+locationOf(nums[i],stack));
-    console.log("stack -"+stack[locationOf(nums[i],stack)]);
+
 
     if (stack.length === 0) {
       countArr[i] = 0;
     }else if (nums[i]> stack[0]) {
-      console.log("Number -"+nums[i]);
-      console.log("Location -"+locationOf(nums[i]-.1,stack));
+
       countArr[i] =locationOf(nums[i]-.1,stack)+1;
     }else{
       countArr[i] =0;
     }
 
-    if (stack.length === 0) {
-      stack.push(nums[i]);
-    }else if (stack.length===1) {
+    if (nums[i]>stack[0] && nums[i] < stack[stack.length - 1]) {
+      stack = insert(nums[i],stack)
+    }else {
       if (stack[0]<nums[i]) {
         stack.push(nums[i])
       }else {
         stack.unshift(nums[i])
       }
-    }else {
-      if (nums[i]>stack[0] && nums[i] < stack[stack.length - 1]) {
-        stack = insert(nums[i],stack)
-      }else {
-        if (stack[0]<nums[i]) {
-          stack.push(nums[i])
-        }else {
-          stack.unshift(nums[i])
-        }
-      }
     }
-
   }
 
   return   countArr;
