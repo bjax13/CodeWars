@@ -32,7 +32,9 @@ function smaller(nums) {
     if (stack.length === 0) {
       countArr[i] = 0;
     }else if (nums[i]> stack[0]) {
-      countArr[i] =locationOf(nums[i]-1,stack)+1;
+      console.log("Number -"+nums[i]);
+      console.log("Location -"+locationOf(nums[i]-.1,stack));
+      countArr[i] =locationOf(nums[i]-.1,stack)+1;
     }else{
       countArr[i] =0;
     }
