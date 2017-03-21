@@ -7,7 +7,7 @@ function smaller(nums) {
   //create an empty array with length of nums fill with 0
 
   function insert(element, array) {
-    array.splice(locationOf(element, array) + 1, 0, element);
+    array.splice(locationOf(element, array) , 0, element);
     return array;
   }
 
@@ -32,12 +32,30 @@ function smaller(nums) {
     if (stack.length === 0) {
       countArr[i] = 0;
     }else if (nums[i]> stack[0]) {
-      countArr[i] =locationOf(nums[i],stack)+1;
+      countArr[i] =locationOf(nums[i]-1,stack)+1;
     }else{
       countArr[i] =0;
     }
 
-    stack = insert(nums[i],stack)
+    if (stack.length === 0) {
+      stack.push(nums[i]);
+    }else if (stack.length===1) {
+      if (stack[0]<nums[i]) {
+        stack.push(nums[i])
+      }else {
+        stack.unshift(nums[i])
+      }
+    }else {
+      if (nums[i]>stack[0] && nums[i] < stack[stack.length - 1]) {
+        stack = insert(nums[i],stack)
+      }else {
+        if (stack[0]<nums[i]) {
+          stack.push(nums[i])
+        }else {
+          stack.unshift(nums[i])
+        }
+      }
+    }
 
   }
 
@@ -45,4 +63,4 @@ function smaller(nums) {
 }
 
 
-console.log(smaller([1,2,3]));
+console.log(smaller([5, 4, 7, 9, 2, 4, 4, 5, 6]));
