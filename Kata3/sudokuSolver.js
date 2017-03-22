@@ -58,14 +58,14 @@ function sudoku(puzzle) {
             if (board[k][j] > 0 ) {
               possZ[board[k][j]-1] = false;
             }
-            // sqr
+          }
+          // sqr
 
-            for (var l = 0; l < 3; l++) {
-              for (var m = 0; m < 3; m++) {
-                if (board[l+(Math.floor(i/3)*3)][m+(Math.floor(j/3)*3)] > 0 ) {
-                  //Math.floor(i/3)][Math.floor(j/3)
-                  possZ[board[l+(Math.floor(i/3)*3)][m+(Math.floor(i/3)*3)]-1] = false;
-                }
+          for (var l = 0; l < 3; l++) {
+            for (var m = 0; m < 3; m++) {
+              if (board[l+(Math.floor(i/3)*3)][m+(Math.floor(j/3)*3)] > 0 ) {
+                //Math.floor(i/3)][Math.floor(j/3)
+                possZ[board[l+(Math.floor(i/3)*3)][m+(Math.floor(i/3)*3)]-1] = false;
               }
             }
           }
