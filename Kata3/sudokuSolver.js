@@ -24,19 +24,10 @@ function sudoku(puzzle) {
   }
 
   function fillGaps(board) {
-    var possibleArr = [
-                [],
-                [],
-                [],
+    var solvedBoard = board.slice(0);
+    var possibleArr = [[],[],[],[],[],[],[],[],[]];
 
-                [],
-                [],
-                [],
-
-                [],
-                [],
-                []];
-
+    // fill possibleArr
     for (var i = 0; i < board.length; i++) {
       for (var j = 0; j < board.length; j++) {
 
@@ -60,37 +51,53 @@ function sudoku(puzzle) {
             }
           }
           // sqr
-
           for (var l = 0; l < 3; l++) {
             for (var m = 0; m < 3; m++) {
-              console.log('this ' + (board[l+(Math.floor(i/3)*3)][m+(Math.floor(j/3)*3)]));
               if (board[l+(Math.floor(i/3)*3)][m+(Math.floor(j/3)*3)] > 0 ) {
                 //Math.floor(i/3)][Math.floor(j/3)
-                console.log('row '+ l+(Math.floor(i/3)*3));
-                console.log('Math '+ (Math.floor(i/3)));
-
-                console.log('col '+ m+(Math.floor(j/3)*3));
-                console.log('Math '+ (Math.floor(j/3)));
-                console.log('num '+ board[l+(Math.floor(i/3)*3)][m+(Math.floor(j/3)*3)]);
                 possZ[board[l+(Math.floor(i/3)*3)][m+(Math.floor(j/3)*3)]-1] = false;
               }
             }
           }
-
           possibleArr[i][j]= possZ;
         }
       }
     }
 
-    console.log("*****");
+    console.log("***-- possible arr --***");
     console.log(possibleArr);
-    console.log("*****");
+    console.log("***-- board --***");
+    console.log(board);
+    console.log("***--  --***");
 
+    function addArr(a, b) {
+      return a + b;
+    }
 
-    return board;
+    for (var i = 0; i < possibleArr.length; i++) {
+      for (var j = 0; j < possibleArr.length; j++) {
+        // console.log(possibleArr[i][j]);
+        // console.log(possibleArr[i][j].reduce(addArr,0));
+        if (possibleArr[i][j].reduce(addArr,0)===1) {
+            for (var k = 0; k < possibleArr[i][j].length; k++) {
+              if (possibleArr[i][j][k]) {
+                solvedBoard[i][j] = k +1;
+              }
+            }
+        }
+
+      }
+    }
+    console.log("***-- solvedBoard --***");
+    console.log(solvedBoard);
+    console.log("***--  --***");
+
+    return solvedBoard;
   }
 
-  fillGaps(solvedPuzzle);
+  while (!validSolution(solvedPuzzle)) {
+    solvedPuzzle = fillGaps(solvedPuzzle);
+  }
 
 
   return solvedPuzzle;
