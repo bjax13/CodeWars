@@ -1,5 +1,7 @@
 //https://www.codewars.com/kata/how-many-are-smaller-than-me-ii
 
+// got to a point where I am stumped.  Will need to ask for help sometime. 
+
 function smaller(nums) {
   var stack = [];
   //create empty stack to track index of items visited
