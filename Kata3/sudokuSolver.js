@@ -63,9 +63,16 @@ function sudoku(puzzle) {
 
           for (var l = 0; l < 3; l++) {
             for (var m = 0; m < 3; m++) {
+              console.log('this ' + (board[l+(Math.floor(i/3)*3)][m+(Math.floor(j/3)*3)]));
               if (board[l+(Math.floor(i/3)*3)][m+(Math.floor(j/3)*3)] > 0 ) {
                 //Math.floor(i/3)][Math.floor(j/3)
-                possZ[board[l+(Math.floor(i/3)*3)][m+(Math.floor(i/3)*3)]-1] = false;
+                console.log('row '+ l+(Math.floor(i/3)*3));
+                console.log('Math '+ (Math.floor(i/3)));
+
+                console.log('col '+ m+(Math.floor(j/3)*3));
+                console.log('Math '+ (Math.floor(j/3)));
+                console.log('num '+ board[l+(Math.floor(i/3)*3)][m+(Math.floor(j/3)*3)]);
+                possZ[board[l+(Math.floor(i/3)*3)][m+(Math.floor(j/3)*3)]-1] = false;
               }
             }
           }
