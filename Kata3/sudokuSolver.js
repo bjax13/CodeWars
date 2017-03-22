@@ -28,17 +28,19 @@ function sudoku(puzzle) {
         var solvedBoard = board.slice(0);
         var possibleArr = [[],[],[],[],[],[],[],[],[]];
 
-        // fill possibleArr
+        // fill possibleArr with an array of possble values for that position.
         for (var i = 0; i < board.length; i++) {
             for (var j = 0; j < board.length; j++) {
 
                 if (board[i][j] > 0) {
+                    // if a value is on the board set array to only be true for that value
                     //---------   1     2     3     4     5     6     7     8     9
                     var poss = [false,false,false,false,false,false,false,false,false]
                     poss[board[i][j] - 1] = true;
                     possibleArr[i][j] = poss;
                 } else {
-                    //---------    1     2     3     4     5     6     7     8     9
+                    // for unsolved items find possible values that could go in that position.
+                    //---------    1    2    3    4    5    6    7    8    9
                     var possZ = [true,true,true,true,true,true,true,true,true]
                     //check if you can eliminate possibilities
                     for (var k = 0; k < board.length; k++) {
@@ -64,14 +66,14 @@ function sudoku(puzzle) {
                 }
             }
         }
+        //function for reduce method. to sum possibilities array
         function addArr(a, b) {
             return a + b;
         }
 
         for (var i = 0; i < possibleArr.length; i++) {
             for (var j = 0; j < possibleArr.length; j++) {
-                // console.log(possibleArr[i][j]);
-                // console.log(possibleArr[i][j].reduce(addArr,0));
+                //if only one possibility exists add it to the solution. 
                 if (possibleArr[i][j].reduce(addArr, 0) === 1) {
                     for (var k = 0; k < possibleArr[i][j].length; k++) {
                         if (possibleArr[i][j][k]) {
