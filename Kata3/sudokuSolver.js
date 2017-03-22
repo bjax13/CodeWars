@@ -23,15 +23,67 @@ function sudoku(puzzle) {
     return (sumh.every(equals45) && sumv.every(equals45));
   }
 
-  for (var i = 0; i < solvedPuzzle.length; i++) {
-    for (var j = 0; j < solvedPuzzle.length; j++) {
-      solvedPuzzle[i][j]
+  function fillGaps(board) {
+    var possibleArr = [
+                [],
+                [],
+                [],
 
+                [],
+                [],
+                [],
 
+                [],
+                [],
+                []];
 
+    for (var i = 0; i < board.length; i++) {
+      for (var j = 0; j < board.length; j++) {
 
+        if (board[i][j] > 0) {
+          //---------   1     2     3     4     5     6     7     8     9
+          var poss = [false,false,false,false,false,false,false,false,false]
+          poss[board[i][j]-1] = true;
+          possibleArr[i][j]= poss;
+        }else {
+          //---------    1     2     3     4     5     6     7     8     9
+          var possZ = [true, true, true, true, true, true, true, true, true]
+          //check if you can eliminate possibilities
+          for (var k = 0; k < board.length; k++) {
+            // row
+            if (board[i][k] > 0 ) {
+              possZ[board[i][k]-1] = false;
+            }
+            // column
+            if (board[k][j] > 0 ) {
+              possZ[board[k][j]-1] = false;
+            }
+            // sqr
+
+            for (var l = 0; l < 3; l++) {
+              for (var m = 0; m < 3; m++) {
+                if (board[l+(Math.floor(i/3)*3)][m+(Math.floor(j/3)*3)] > 0 ) {
+                  //Math.floor(i/3)][Math.floor(j/3)
+                  possZ[board[l+(Math.floor(i/3)*3)][m+(Math.floor(i/3)*3)]-1] = false;
+                }
+              }
+            }
+          }
+
+          possibleArr[i][j]= possZ;
+        }
+      }
     }
+
+    console.log("*****");
+    console.log(possibleArr);
+    console.log("*****");
+
+
+    return board;
   }
+
+  fillGaps(solvedPuzzle);
 
 
   return solvedPuzzle;
