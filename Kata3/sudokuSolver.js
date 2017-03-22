@@ -83,8 +83,10 @@ function sudoku(puzzle) {
         }
         return solvedBoard;
     }
-    while (!validSolution(solvedPuzzle)) {
+    var terminate = 0 ;
+    while (!validSolution(solvedPuzzle)|| terminate<10000) {
         solvedPuzzle = fillGaps(solvedPuzzle);
+        terminate++;
     }
     return solvedPuzzle;
 }
