@@ -1,5 +1,9 @@
 function compose(f,g) {
-  return function (x) {
-    return f(g(x))
+
+
+
+  return function () {
+
+    return f(g.apply( this, arguments ))
   }
 }
