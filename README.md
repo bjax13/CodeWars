@@ -4,23 +4,24 @@ ___________________________ Current problem _______________
 # Paste problem text below.
 ____________________________________________________
 
-Description:
+A poor miner is trapped in a mine and you have to help him to get out !
 
-The Western Suburbs Croquet Club has two categories of membership, Senior and Open. They would like your help with an application form that will tell prospective members which category they will be placed.
+Only, the mine is all dark so you have to tell him where to go.
 
-To be a senior, a member must be at least 55 years old and have a handicap greater than 7. In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap.
+In this kata, you will have to implement a method solve(map, miner, exit) that has to return the path the miner must take to reach the exit as an array of moves, such as : ['up', 'down', 'right', 'left']. There are 4 possible moves, up, down, left and right, no diagonal.
 
-Input
+map is a 2-dimensional array of boolean values, representing squares. false for walls, true for open squares (where the miner can walk). It will never be larger than 5 x 5. It is laid out as an array of columns. All columns will always be the same size, though not necessarily the same size as rows (in other words, maps can be rectangular). The map will never contain any loop, so there will always be only one possible path. The map may contain dead-ends though.
 
-Input will consist of a list of lists containing two items each. Each list contains information for a single potential member. Information consists of an integer for the person's age and an integer for the person's handicap.
+miner is the position of the miner at the start, as an object made of two zero-based integer properties, x and y. For example {x:0, y:0} would be the top-left corner.
 
-Example Input
+exit is the position of the exit, in the same format as miner.
 
-[[18, 20],[45, 2],[61, 12],[37, 6],[21, 21],[78, 9]]
-Output
+Note that the miner can't go outside the map, as it is a tunnel.
 
-Output will consist of a list of string values (in Haskell: Open or Senior) stating whether the respective member is to be placed in the senior or open category.
+Let's take a pretty basic example :
 
-Example Output
+var map = [[true, false],
+    [true, true]];
 
-["Open", "Open", "Senior", "Open", "Open", "Senior"]
+solve(map, {x:0,y:0}, {x:1,y:1});
+// Should return ['right', 'down']
