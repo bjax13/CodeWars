@@ -1,17 +1,13 @@
-function longest(s1, s2) {
-  console.log(s1);
-  console.log(s2);
-  let arr1 = (s1+s2).split('');
+function openOrSenior(data){
 
-  let uniq = [];
+  var arr = [];
 
-
-
-
-  for (var i = 0; i < arr1.length; i++) {
-    if (uniq.indexOf(arr1[i])=== -1) {
-      uniq.push(arr1[i])
+  for (var i = 0; i < data.length; i++) {
+    if (data[i][0]>= 55 && (data[i][1] > 7 && data[i][1] < 27)) {
+      arr.push('Senior');
+    }else {
+      arr.push('Open');
     }
   }
-
-  return uniq.sort().join('');
+  return arr;
+}
