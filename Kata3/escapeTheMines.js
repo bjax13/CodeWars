@@ -1,11 +1,22 @@
-function smash (words) {
+function solve(map, miner, exit) {
+  var maxX = map[0].length;
+  var maxY = map.length;
+  var instruction = [];
 
-  var string = ''
+  for (var i = miner.y; i < map.length; i++) {
+    for (var j = miner.x; j < map[i].length; j++) {
+      if (i === exit.y && j === exit.x) {
+        return instruction;
+      }
 
-    for (var i = 0; i < words.length; i++) {
-      string += words[i];
-      string += " ";
     }
+  }
 
-    return string;
-};
+
+  return ['default'];
+}
+
+var map = [[true, false],
+           [true, true]];
+
+console.log(solve(map, {x:0,y:0}, {x:1,y:1}));
