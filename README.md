@@ -4,18 +4,25 @@ ___________________________ Current problem _______________
 # Paste problem text below.
 ____________________________________________________
 
-Write a function called validBraces that takes a string of braces, and determines if the order of the braces is valid. validBraces should return true if the string is valid, and false if it's invalid.
+Description:
 
-This Kata is similar to the Valid Parentheses Kata, but introduces four new characters. Open and closed brackets, and open and closed curly braces. Thanks to @arnedag for the idea!
+Create a function taking a positive integer as its parameter and returning a string containing the Roman Numeral representation of that integer.
 
-All input strings will be nonempty, and will only consist of open parentheses '(' , closed parentheses ')', open brackets '[', closed brackets ']', open curly braces '{' and closed curly braces '}'.
+Modern Roman numerals are written by expressing each digit separately starting with the left most digit and skipping any digit with a value of zero. In Roman numerals 1990 is rendered: 1000=M, 900=CM, 90=XC; resulting in MCMXC. 2008 is written as 2000=MM, 8=VIII; or MMVIII. 1666 uses each Roman symbol in descending order: MDCLXVI.
 
-What is considered Valid? A string of braces is considered valid if all braces are matched with the correct brace.
-For example:
-'(){}[]' and '([{}])' would be considered valid, while '(}', '[(])', and '[({})](]' would be considered invalid.
+Example:
 
-Examples:
-validBraces( "(){}[]" ) => returns true
-validBraces( "(}" ) => returns false
-validBraces( "[(])" ) => returns false
-validBraces( "([{}])" ) => returns true 
+solution(1000); // should return 'M'
+Help:
+
+Symbol    Value
+I          1
+V          5
+X          10
+L          50
+C          100
+D          500
+M          1,000
+Remember that there can't be more than 3 identical symbols in a row.
+
+More about roman numerals - http://en.wikipedia.org/wiki/Roman_numerals

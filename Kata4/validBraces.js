@@ -25,7 +25,7 @@ function validBraces(braces){
   }
 
   //after completing the loop all left stack items should be removed.
-  //otherwise return false. 
+  //otherwise return false.
   if (leftStack.length > 0) {
     return false
   }
