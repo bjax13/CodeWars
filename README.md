@@ -4,24 +4,18 @@ ___________________________ Current problem _______________
 # Paste problem text below.
 ____________________________________________________
 
-A poor miner is trapped in a mine and you have to help him to get out !
+Write a function called validBraces that takes a string of braces, and determines if the order of the braces is valid. validBraces should return true if the string is valid, and false if it's invalid.
 
-Only, the mine is all dark so you have to tell him where to go.
+This Kata is similar to the Valid Parentheses Kata, but introduces four new characters. Open and closed brackets, and open and closed curly braces. Thanks to @arnedag for the idea!
 
-In this kata, you will have to implement a method solve(map, miner, exit) that has to return the path the miner must take to reach the exit as an array of moves, such as : ['up', 'down', 'right', 'left']. There are 4 possible moves, up, down, left and right, no diagonal.
+All input strings will be nonempty, and will only consist of open parentheses '(' , closed parentheses ')', open brackets '[', closed brackets ']', open curly braces '{' and closed curly braces '}'.
 
-map is a 2-dimensional array of boolean values, representing squares. false for walls, true for open squares (where the miner can walk). It will never be larger than 5 x 5. It is laid out as an array of columns. All columns will always be the same size, though not necessarily the same size as rows (in other words, maps can be rectangular). The map will never contain any loop, so there will always be only one possible path. The map may contain dead-ends though.
+What is considered Valid? A string of braces is considered valid if all braces are matched with the correct brace.
+For example:
+'(){}[]' and '([{}])' would be considered valid, while '(}', '[(])', and '[({})](]' would be considered invalid.
 
-miner is the position of the miner at the start, as an object made of two zero-based integer properties, x and y. For example {x:0, y:0} would be the top-left corner.
-
-exit is the position of the exit, in the same format as miner.
-
-Note that the miner can't go outside the map, as it is a tunnel.
-
-Let's take a pretty basic example :
-
-var map = [[true, false],
-    [true, true]];
-
-solve(map, {x:0,y:0}, {x:1,y:1});
-// Should return ['right', 'down']
+Examples:
+validBraces( "(){}[]" ) => returns true
+validBraces( "(}" ) => returns false
+validBraces( "[(])" ) => returns false
+validBraces( "([{}])" ) => returns true 
