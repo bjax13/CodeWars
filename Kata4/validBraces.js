@@ -18,6 +18,9 @@ function validBraces(braces){
       }
     }
   }
+  if (leftStack.length > 0) {
+    return false
+  }
 
   return true;
 }
