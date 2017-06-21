@@ -4,8 +4,40 @@ function hand(holeCards, communityCards) {
     return array.map((i)=> i[0])
   }
 
+  let sortRanks = (array) =>{
+    array = array.sort((a,b)=>{
+      if (a === "J") {
+        a = 11
+      }
+      else if (a === "Q") {
+        a = 12
+      }
+      else if (a === "K") {
+        a = 13
+      }
+      else if (a === "A") {
+        a = 14
+      }
+      if (b === "J") {
+        b = 11
+      }
+      else if (b === "Q") {
+        b = 12
+      }
+      else if (b === "K") {
+        b = 13
+      }
+      else if (b === "A") {
+        b = 14
+      }
+
+      return b-a;
+    })
+    return array;
+  }
+
   let cardCount = (array) => {
-    var cardCountObj = array.reduce(function (acc, curr) {
+    let cardCountObj = array.reduce(function (acc, curr) {
       if (typeof acc[curr] == 'undefined') {
         acc[curr] = 1;
       } else {
@@ -24,27 +56,50 @@ function hand(holeCards, communityCards) {
 
     cards = removeSuit(cards)
 
-    var numCardsObj = cardCount(cards)
+    console.log(cards);
+    cards = sortRanks(cards);
+    uniqeCards = cards.filter(function(item, pos, ary) {
+        return !pos || item != ary[pos - 1];
+    })
+    console.log(cards);
 
-    console.log(numCardsObj);
+    let numCardsObj = cardCount(cards)
 
-    for (var rank in numCardsObj) {
+    for (let rank in numCardsObj) {
       if (numCardsObj.hasOwnProperty(rank)) {
         if (numCardsObj[rank] === 4) {
-          console.log('true');
-          console.log(rank);
-          console.log(numCardsObj[rank]);
-        }else {
-          console.log(rank);
-          console.log(numCardsObj[rank]);
-        }
+          let remainingCard;
 
+          if (rank === uniqeCards[0]) {
+            remainingCard = uniqeCards[1]
+          } else {
+            remainingCard = uniqeCards[0]
+          }
+
+          return {
+            test: true,
+            rank: [rank, remainingCard],
+          }
+        }else {
+
+        }
       }
+    }
+
+    return {
+      test: false,
+      suit: null,
+      rank: null
     }
 
   }
 
-  checkFourOfAKind(holeCards, communityCards)
+  let rankTest = checkFourOfAKind(holeCards, communityCards);
+
+  if (rankTest.test === true) {
+    console.log(rankTest.suit);
+    return {"type":"four-of-a-kind","ranks":rankTest.rank}
+  }
 
 
   return {type:"TODO", ranks: []};
