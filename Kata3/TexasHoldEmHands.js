@@ -18,7 +18,7 @@ function hand(holeCards, communityCards) {
       else if (a === "A") {
         a = 14
       }
-      if (b === "J") {
+      else if (b === "J") {
         b = 11
       }
       else if (b === "Q") {
@@ -56,12 +56,10 @@ function hand(holeCards, communityCards) {
 
     cards = removeSuit(cards)
 
-    console.log(cards);
     cards = sortRanks(cards);
     uniqeCards = cards.filter(function(item, pos, ary) {
         return !pos || item != ary[pos - 1];
     })
-    console.log(cards);
 
     let numCardsObj = cardCount(cards)
 
@@ -80,18 +78,13 @@ function hand(holeCards, communityCards) {
             test: true,
             rank: [rank, remainingCard],
           }
-        }else {
-
         }
       }
     }
-
     return {
       test: false,
-      suit: null,
       rank: null
     }
-
   }
 
   let rankTest = checkFourOfAKind(holeCards, communityCards);
@@ -99,6 +92,43 @@ function hand(holeCards, communityCards) {
   if (rankTest.test === true) {
     console.log(rankTest.suit);
     return {"type":"four-of-a-kind","ranks":rankTest.rank}
+  }
+
+
+  let checkThreeOfAKind = (hole , community) => {
+    let cards = hole.concat(community);
+
+    cards = removeSuit(cards)
+
+    cards = sortRanks(cards);
+    uniqeCards = cards.filter(function(item, pos, ary) {
+        return !pos || item != ary[pos - 1];
+    })
+
+    let numCardsObj = cardCount(cards)
+
+    for (let rank in numCardsObj) {
+      if (numCardsObj.hasOwnProperty(rank)) {
+        if (numCardsObj[rank] === 3) {
+          let remainingCard;
+
+          if (rank === uniqeCards[0]) {
+            remainingCard = uniqeCards[1] + uniqeCards[2]
+          } else {
+            remainingCard = uniqeCards[0]
+          }
+
+          return {
+            test: true,
+            rank: [rank, remainingCard],
+          }
+        }
+      }
+    }
+    return {
+      test: false,
+      rank: null
+    }
   }
 
 
