@@ -2,7 +2,11 @@ function hand(holeCards, communityCards) {
 
 
   let removeSuit = (array) =>{
-    return array.map((i)=> i[0])
+    return array.map((i)=> {
+      arr = i.split('');
+      arr.pop();
+      return arr.join('')
+    })
   }
 
   let sortRanks = (array) =>{
@@ -91,9 +95,18 @@ function hand(holeCards, communityCards) {
   let checkThreeOfAKind = (hole , community) => {
     let cards = hole.concat(community);
 
+    console.log(hole);
+    console.log(community);
+    console.log(cards);
+
     cards = removeSuit(cards)
 
+    console.log(cards);
+
     cards = sortRanks(cards);
+
+    console.log(cards);
+
     uniqeCards = cards.filter(function(item, pos, ary) {
         return !pos || item != ary[pos - 1];
     })
@@ -105,12 +118,12 @@ function hand(holeCards, communityCards) {
         if (numCardsObj[rank] === 3) {
           let remainingCard = [];
 
-          if (rank === uniqeCards[0]) {
-            remainingCard.push(uniqeCards[1]);
-            remainingCard.push(uniqeCards[2]);
-          } else {
-            remainingCard.push(uniqeCards[0]);
-            remainingCard.push(uniqeCards[1]);
+          for (var i = 0; i < uniqeCards.length; i++) {
+            console.log(uniqeCards);
+
+            if (uniqeCards[i] !== rank && remainingCard.length < 2) {
+              remainingCard.push(uniqeCards[i]);
+            }
           }
 
           return {
@@ -138,7 +151,7 @@ function hand(holeCards, communityCards) {
   if (rankTest.test === true) {
     console.log(rankTest.test);
     console.log(rankTest.suit);
-    return {"type":"four-of-a-kind","ranks":rankTest.rank}
+    return {"type":"three-of-a-kind","ranks":rankTest.rank}
   }
 
   return {type:"TODO", ranks: []};
@@ -153,4 +166,4 @@ function hand(holeCards, communityCards) {
 //console.log(hand([ 'K♠', 'Q♦' ],[ 'J♣', 'Q♥', '9♥', '2♥', '3♦' ]));
 
 //expected {"type":"four-of-a-kind","ranks":["J","9"]}
-console.log(hand([ 'J♦', 'J♠' ],[ '9♦', '5♣', 'J♣', '4♦', 'J♥' ]));
+console.log(hand([ '4♥', '10♠' ],[ '7♦', '6♥', '6♦', '6♠', '8♠'  ]));
