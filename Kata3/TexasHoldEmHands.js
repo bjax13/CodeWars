@@ -1,5 +1,6 @@
 function hand(holeCards, communityCards) {
 
+
   let removeSuit = (array) =>{
     return array.map((i)=> i[0])
   }
@@ -87,14 +88,6 @@ function hand(holeCards, communityCards) {
     }
   }
 
-  let rankTest = checkFourOfAKind(holeCards, communityCards);
-
-  if (rankTest.test === true) {
-    console.log(rankTest.suit);
-    return {"type":"four-of-a-kind","ranks":rankTest.rank}
-  }
-
-
   let checkThreeOfAKind = (hole , community) => {
     let cards = hole.concat(community);
 
@@ -110,17 +103,19 @@ function hand(holeCards, communityCards) {
     for (let rank in numCardsObj) {
       if (numCardsObj.hasOwnProperty(rank)) {
         if (numCardsObj[rank] === 3) {
-          let remainingCard;
+          let remainingCard = [];
 
           if (rank === uniqeCards[0]) {
-            remainingCard = uniqeCards[1] + uniqeCards[2]
+            remainingCard.push(uniqeCards[1]);
+            remainingCard.push(uniqeCards[2]);
           } else {
-            remainingCard = uniqeCards[0]
+            remainingCard.push(uniqeCards[0]);
+            remainingCard.push(uniqeCards[1]);
           }
 
           return {
             test: true,
-            rank: [rank, remainingCard],
+            rank: [rank].concat(remainingCard),
           }
         }
       }
@@ -131,6 +126,20 @@ function hand(holeCards, communityCards) {
     }
   }
 
+  let rankTest = checkFourOfAKind(holeCards, communityCards);
+
+  if (rankTest.test === true) {
+    console.log(rankTest.suit);
+    return {"type":"four-of-a-kind","ranks":rankTest.rank}
+  }
+
+  rankTest = checkThreeOfAKind(holeCards, communityCards);
+
+  if (rankTest.test === true) {
+    console.log(rankTest.test);
+    console.log(rankTest.suit);
+    return {"type":"four-of-a-kind","ranks":rankTest.rank}
+  }
 
   return {type:"TODO", ranks: []};
 }
