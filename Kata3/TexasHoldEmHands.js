@@ -36,7 +36,7 @@ function hand(holeCards, communityCards) {
         b = 14
       }
 
-      return b-a;
+      return a - b;
     })
     return array;
   }
